@@ -3,8 +3,18 @@
     <h2>Because even one pen test is excessive</h2>
 
     <form action="/sign-in" method="get">
-        <input type="text" placeholder="Username" name="username">
-        <button>Sign in</button>
+        <label>
+            Username:
+            <input type="text" placeholder="Username" name="username">
+            <button>Sign in</button><br />
+        </label>
+        <label>
+            XSS filtering:
+            <select name="difficulty">
+                <option value="no_filter">No filter</option>
+                <option value="simple_filter_1">Simple filter 1</option>
+            </select>
+        </label>
     </form>
 
 {{/partial}}

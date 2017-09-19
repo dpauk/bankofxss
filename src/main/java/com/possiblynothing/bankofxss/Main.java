@@ -16,7 +16,16 @@ public class Main {
 
         get("/sign-in", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            model.put("username", req.queryParams("username"));
+            String username = "";
+            switch (req.queryParams("difficulty")) {
+                case "no_filter":
+                    username = req.queryParams("username");
+                    break;
+                case "simple_filter_1":
+                    XssFilter xssFilter = new SimpleScriptSubstitution();
+                    username = xssFilter.applyFilter(req.queryParams("username"));
+            }
+            model.put("username", username);
             return new ModelAndView(model, "request-credentials.hbs");
         }, new HandlebarsTemplateEngine());
     }

@@ -59,3 +59,8 @@ button{
     font-size: 14px;
     padding: 10px 20px;
 }
+
+label {
+    display: block;
+    margin-bottom: 1em;
+}
