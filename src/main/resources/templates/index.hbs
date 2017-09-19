@@ -1,0 +1,12 @@
+{{#partial "content"}}
+    <h1>Welcome to the Bank of XSS!</h1>
+    <h2>Because even one pen test is excessive</h2>
+
+    <form action="/sign-in" method="get">
+        <input type="text" placeholder="Username" name="username">
+        <button>Sign in</button>
+    </form>
+
+{{/partial}}
+
+{{> base.hbs }}
