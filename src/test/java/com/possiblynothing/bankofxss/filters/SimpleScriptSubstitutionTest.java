@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.possiblynothing.bankofxss;
+package com.possiblynothing.bankofxss.filters;
 
+import com.possiblynothing.bankofxss.filters.SimpleScriptSubstitution;
+import com.possiblynothing.bankofxss.filters.XssFilter;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -30,7 +32,12 @@ public class SimpleScriptSubstitutionTest {
     }
     
     @Test
-    public void embeddedScriptTagsCauseXss() throws Exception {  
+    public void embeddedScriptTagsCauseXss() throws Exception {
         assertEquals("<script>alert(1);</script>", xssFilter.applyFilter("<scr<script>ipt>alert(1);</scr</script>ipt>"));
+    }
+
+    @Test
+    public void alternateCaseScriptTagsAreRemoved() throws Exception {
+        assertEquals("alert(1);", xssFilter.applyFilter("<Script>alert(1);</Script>"));
     }
 }

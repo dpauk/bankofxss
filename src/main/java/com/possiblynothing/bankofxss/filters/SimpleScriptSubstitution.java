@@ -1,4 +1,4 @@
-package com.possiblynothing.bankofxss;
+package com.possiblynothing.bankofxss.filters;
 
 /**
  *
@@ -9,7 +9,7 @@ public class SimpleScriptSubstitution implements XssFilter {
     @Override
     public String applyFilter(String unfilteredString) {
         // Test: <scr<script>ipt>alert(1);</scr</script>ipt>
-        return unfilteredString.replaceAll("<\\/?script>", "");
+        return unfilteredString.replaceAll("(?i)<\\/?script>", "");
 
     }
 

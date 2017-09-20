@@ -1,4 +1,4 @@
-package com.possiblynothing.bankofxss;
+package com.possiblynothing.bankofxss.filters;
 
 /**
  *
