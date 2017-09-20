@@ -1,5 +1,6 @@
 package com.possiblynothing.bankofxss;
 
+import com.possiblynothing.bankofxss.filters.AllScriptsRemoved;
 import com.possiblynothing.bankofxss.filters.OnlyLowerCase;
 import com.possiblynothing.bankofxss.filters.SimpleScriptSubstitution;
 import com.possiblynothing.bankofxss.filters.XssFilter;
@@ -33,6 +34,10 @@ public class Main {
                     break;
                 case "simple_filter_2":
                     xssFilter = new SimpleScriptSubstitution();
+                    username = xssFilter.applyFilter(req.queryParams(USERNAME));
+                    break;
+                case "medium_filter_1":
+                    xssFilter = new AllScriptsRemoved();
                     username = xssFilter.applyFilter(req.queryParams(USERNAME));
                     break;
                 default:
