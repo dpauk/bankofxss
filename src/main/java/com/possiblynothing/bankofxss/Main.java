@@ -9,6 +9,8 @@ import java.util.Map;
 import static spark.Spark.*;
 
 public class Main {
+    private static final String USERNAME = "username";
+
     public static void main(String[] args) {
         staticFileLocation("/public");
 
@@ -16,14 +18,18 @@ public class Main {
 
         get("/sign-in", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            String username = "";
+            String username;
             switch (req.queryParams("difficulty")) {
                 case "no_filter":
-                    username = req.queryParams("username");
+                    username = req.queryParams(USERNAME);
                     break;
                 case "simple_filter_1":
                     XssFilter xssFilter = new SimpleScriptSubstitution();
-                    username = xssFilter.applyFilter(req.queryParams("username"));
+                    username = xssFilter.applyFilter(req.queryParams(USERNAME));
+                    break;
+                default:
+                    username = req.queryParams(USERNAME);
+                    break;
             }
             model.put("username", username);
             return new ModelAndView(model, "request-credentials.hbs");
