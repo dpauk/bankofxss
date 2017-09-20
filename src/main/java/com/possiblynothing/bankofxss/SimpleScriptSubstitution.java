@@ -8,8 +8,9 @@ public class SimpleScriptSubstitution implements XssFilter {
 
     @Override
     public String applyFilter(String unfilteredString) {
-        String openingScriptFilter = unfilteredString.replace("<script>", "");
-        return openingScriptFilter.replace("</script>", "");
+        // Test: <scr<script>ipt>alert(1);</scr</script>ipt>
+        return unfilteredString.replaceAll("<\\/?script>", "");
+
     }
 
 }
