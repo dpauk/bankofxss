@@ -18,6 +18,9 @@ public class Main {
     public static void main(String[] args) {
         staticFileLocation("/public");
 
+        // disable the xss protection in Chrome
+        before((req, res) -> res.header("X-XSS-Protection", "0"));
+
         get("/", (req, res) -> new ModelAndView(null, "index.hbs"), new HandlebarsTemplateEngine());
 
         get("/sign-in", (req, res) -> {
@@ -45,7 +48,9 @@ public class Main {
                     break;
             }
             model.put("username", username);
-            return new ModelAndView(model, "request-credentials.hbs");
+            return new ModelAndView(model, "results.hbs");
         }, new HandlebarsTemplateEngine());
+
+        get("/help", (req, res) -> new ModelAndView(null, "help.hbs"), new HandlebarsTemplateEngine());
     }
 }

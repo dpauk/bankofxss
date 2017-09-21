@@ -1,22 +1,27 @@
 {{#partial "content"}}
-    <h1>Welcome to the Bank of XSS!</h1>
-    <h2>Because even one pen test is excessive</h2>
+    <!--<h1>Welcome to the Bank of XSS!</h1>-->
+    <!--<h2>Because even one pen test is excessive</h2>-->
 
-    <form action="/sign-in" method="get">
-        <label>
-            Username:
-            <input type="text" placeholder="Username" name="username">
-            <button>Sign in</button><br />
+    <div class="jumbotron">
+        <h1 class="display-3 center">Welcome to the Bank of XSS!</h1>
+        <p class="lead">We can offer the best rates around by saving money on security testing</p>
+    </div>
+
+    <form action="/sign-in" method="get" class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputUsername" class="sr-only">Username</label>
+        <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required autofocus>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button><br />
         </label>
-        <label>
-            XSS filtering:
-            <select name="difficulty">
+        <label for="xssFiltering">XSS filtering</label>
+        <div class="select">
+            <select name="difficulty" class="form-control">
                 <option value="no_filter">No filter</option>
                 <option value="simple_filter_1">Simple filter 1</option>
                 <option value="simple_filter_2">Simple filter 2</option>
                 <option value="medium_filter_1">Medium filter 1</option>
             </select>
-        </label>
+        </div>
     </form>
 
 {{/partial}}

@@ -1,0 +1,24 @@
+{{#partial "content"}}
+    <!--<h1>Welcome to the Bank of XSS!</h1>-->
+    <!--<h2>Because even one pen test is excessive</h2>-->
+
+    <div class="jumbotron">
+        <h1 class="display-3 center">Help!</h1>
+        <!--<p class="lead">We can offer the best rates around by saving money on security testing</p>-->
+    </div>
+    <p>The Bank of XSS is an intentionally vulnerable website used to learn about <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">Reflected Cross-Site scripting</a> (XSS).</p>
+    <p>It offers varying levels of XSS filtering at the server-side, starting with no filtering and gradually getting harder based on the XSS filtering drop-down value.</p>
+    <p>None of the filters are perfect, so they can all be defeated by trying different things.  Beating it is just a matter of playing and seeing what happens.</p>
+
+    <h1>Tips</h1>
+    <p>The simple filters can all be defeated using script tags.  You might just have to play around to get them to work.</p>
+    <p>The medium filters are much better at sanitising the input string, so you might well need to think about ways other than script tags to defeat them.</p>
+
+    <h1>Who wrote this?</h1>
+    <p>This intentionally vulnerable web application was written by the Santander Technology Application Security team in the UK.  If you beat all the filters, you might just be the kind of person we're looking for.</p>
+
+    </form>
+
+{{/partial}}
+
+{{> base.hbs }}
